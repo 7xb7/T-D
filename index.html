@@ -110,27 +110,6 @@
 </head>
 <body>
 
-  <!-- ✅ تشغيل الأغنية تلقائيًا -->
-  <iframe 
-    id="carelessPlayer"
-    width="0" 
-    height="0" 
-    src="https://www.youtube.com/embed/izGwDsrQ1eQ?start=42&loop=1&playlist=izGwDsrQ1eQ" 
-    frameborder="0" 
-    allow="autoplay"
-    allowfullscreen>
-  </iframe>
-
-  <script>
-  // يشتغل الصوت بعد أول ضغطة على الصفحة
-  document.addEventListener("click", () => {
-    const player = document.getElementById('carelessPlayer');
-    const src = player.getAttribute('src');
-    player.setAttribute('src', src);
-  }, { once: true });
-</script>
-
-
   <div id="blackScreen">
     <div>اها؟</div>
   </div>
