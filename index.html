@@ -10,6 +10,7 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      overflow-x: hidden;
     }
 
     body {
@@ -23,7 +24,6 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      overflow-x: hidden;
     }
 
     @media screen and (max-width: 1024px) {
@@ -161,6 +161,14 @@
         opacity: 1;
         transform: scale(1) rotate(-45deg);
       }
+    }
+
+    html, body {
+      overflow-x: hidden;
+    }
+
+    * {
+      outline: 1px solid red;
     }
   </style>
 </head>
