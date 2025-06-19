@@ -101,18 +101,50 @@
     }
 
     .heart {
-      position: fixed;
-      color: purple;
-      z-index: 0;
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: purple;
+      transform: rotate(-45deg);
+      animation: fadeInOut 3s ease-in-out infinite;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: purple;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: 10px;
+      top: 0;
+    }
+
+    @keyframes fadeInOut {
+      0%, 100% {
+        opacity: 0;
+        transform: scale(0.5) rotate(-45deg);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1) rotate(-45deg);
+      }
     }
   </style>
 </head>
 <body>
-
   <div id="blackScreen">
     <div>اها؟</div>
   </div>
-
   <div class="container">
     <img src="https://i.postimg.cc/C1mk8LGM/image.png" alt="وجه بريء" />
     <div class="question">دودو تحبيني ولا تحبي الفلوس؟</div>
@@ -121,12 +153,10 @@
       <button class="button no-button" onclick="moveNoButton()">الفلوس</button>
     </div>
   </div>
-
   <div id="messageBox">
     <img id="loveImage" src="https://i.imgflip.com/2qgoid.jpg?a485856" alt="Love Image" />
     <p id="loveText"> <3 احبكبكبكبكك اكثرررر</p>
   </div>
-
   <script>
     let noClickCount = 0;
 
@@ -134,13 +164,13 @@
       const messageBox = document.getElementById('messageBox');
       const container = document.querySelector('.container');
 
-      container.style.display = 'none'; 
+      container.style.display = 'none';
       messageBox.style.display = 'block';
 
       setTimeout(() => {
         messageBox.style.display = 'none';
         container.style.display = 'block';
-      }, 1000000); 
+      }, 1000000);
     }
 
     function moveNoButton() {
@@ -153,8 +183,8 @@
       if (noClickCount <= 1) {
         const pageWidth = window.innerWidth - noButton.offsetWidth;
         const pageHeight = window.innerHeight - noButton.offsetHeight;
-        const randomX = Math.floor(Math.random() * pageWidth);
-        const randomY = Math.floor(Math.random() * pageHeight);
+        const randomX = Math.max(0, Math.floor(Math.random() * pageWidth));
+        const randomY = Math.max(0, Math.floor(Math.random() * pageHeight));
         noButton.style.position = 'absolute';
         noButton.style.left = `${randomX}px`;
         noButton.style.top = `${randomY}px`;
@@ -169,24 +199,33 @@
       }
     }
 
-    function createRandomHeart() {
-      const heart = document.createElement('div');
-      heart.classList.add('heart');
-      heart.innerHTML = '♥️';
-      heart.style.left = `${Math.random() * 100}vw`;
-      heart.style.top = `${Math.random() * 100}vh`;
-      heart.style.fontSize = `${Math.floor(Math.random() * 20) + 20}px`;
-      heart.style.opacity = Math.random();
-      document.body.appendChild(heart);
+    const maxHearts = 123;
 
-      setTimeout(() => heart.remove(), 10000);
+    function createHearts() {
+      const body = document.body;
+
+      setInterval(() => {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+
+        const maxWidth = window.innerWidth - 20;
+        const maxHeight = window.innerHeight - 20;
+        const randomX = Math.random() * maxWidth;
+        const randomY = Math.random() * maxHeight;
+
+        heart.style.left = `${randomX}px`;
+        heart.style.top = `${randomY}px`;
+        heart.style.animationDelay = `${Math.random() * 3}s`;
+
+        body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 3000);
+      }, 100);
     }
 
-    for (let i = 0; i < 123; i++) {
-      createRandomHeart();
-    }
-
-    setInterval(createRandomHeart, 69);
+    createHearts();
   </script>
 </body>
 </html>
