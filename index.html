@@ -5,171 +5,161 @@
   <title>T&D</title>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700&display=swap" rel="stylesheet" />
   <style>
-    
-    html, body {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      overflow-x: hidden;
-    }
+  html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
 
+  body {
+    font-family: 'Cairo', sans-serif;
+    background-image: url('https://i.postimg.cc/br9rK6v6/507766912-748279297549616-3947913920181794192-n.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  @media screen and (max-width: 1024px) {
     body {
-      font-family: 'Cairo', sans-serif;
-      background-image: url('https://i.postimg.cc/br9rK6v6/507766912-748279297549616-3947913920181794192-n.jpg');
+      background-image: url('https://i.postimg.cc/TYFDBxdY/IMG-0578.jpg');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
       background-attachment: fixed;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    @media screen and (max-width: 1024px) {
-      body {
-        background-image: url('https://i.postimg.cc/TYFDBxdY/IMG-0578.jpg');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        height: 100vh;
-        overflow-x: hidden;
-      }
-    }
-
-    .container {
-      text-align: center;
-      max-width: 100%;
-    }
-
-    .container img {
-      width: 650px;
-      height: auto;
-      margin-bottom: 10px;
-    }
-
-    .question {
-      font-size: 28px;
-      color: white;
-      margin-bottom: 20px;
-    }
-
-    .button {
-      display: inline-block;
-      margin: 10px;
-      padding: 12px 25px;
-      background-color: #39FF14;
-      color: black;
-      border: none;
-      cursor: pointer;
-      font-size: 18px;
-      border-radius: 25px;
-      font-family: 'Cairo', sans-serif;
-      transition: 0.3s ease;
-    }
-
-    .button:hover {
-      opacity: 0.8;
-    }
-
-    .no-button {
-      position: relative;
-      max-width: 100%;
-    }
-
-    #messageBox {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background-color: #ebebeb;
-      padding: 20px;
-      border-radius: 15px;
-      display: none;
-      text-align: center;
-      z-index: 999;
-    }
-
-    #messageBox img {
-      width: 600px;
-      max-width: 100%;
-      margin-bottom: 0px;
-      border-radius: 0px;
-    }
-
-    #loveText {
-      font-size: 30px;
-      color: black;
-    }
-
-    #blackScreen {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
       height: 100vh;
-      background-color: black;
-      display: none;
-      z-index: 10000;
-      justify-content: center;
-      align-items: center;
     }
+  }
 
-    #blackScreen div {
-      color: white;
-      font-size: 35px;
-      font-family: 'Cairo', sans-serif;
-    }
+  .container {
+    text-align: center;
+    max-width: 100%;
+  }
 
-    .heart {
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background-color: purple;
-      transform: rotate(-45deg);
-      animation: fadeInOut 3s ease-in-out infinite;
-      pointer-events: none;
-    }
+  .container img {
+    width: 650px;
+    height: auto;
+    margin-bottom: 10px;
+  }
 
-    .heart::before,
-    .heart::after {
-      content: '';
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background-color: purple;
-      border-radius: 50%;
-    }
+  .question {
+    font-size: 28px;
+    color: white;
+    margin-bottom: 20px;
+  }
 
-    .heart::before {
-      top: -10px;
-      left: 0;
-    }
+  .button {
+    display: inline-block;
+    margin: 10px;
+    padding: 12px 25px;
+    background-color: #39FF14;
+    color: black;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 25px;
+    font-family: 'Cairo', sans-serif;
+    transition: 0.3s ease;
+  }
 
-    .heart::after {
-      left: 10px;
-      top: 0;
-    }
+  .button:hover {
+    opacity: 0.8;
+  }
 
-    @keyframes fadeInOut {
-      0%, 100% {
-        opacity: 0;
-        transform: scale(0.5) rotate(-45deg);
-      }
-      50% {
-        opacity: 1;
-        transform: scale(1) rotate(-45deg);
-      }
-    }
+  .no-button {
+    position: relative;
+    max-width: 100%;
+  }
 
-    html, body {
-      overflow-x: hidden;
-    }
+  #messageBox {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ebebeb;
+    padding: 20px;
+    border-radius: 15px;
+    display: none;
+    text-align: center;
+    z-index: 999;
+  }
 
-    * {
-      outline: 1px solid red;
+  #messageBox img {
+    width: 600px;
+    max-width: 100%;
+    margin-bottom: 0px;
+    border-radius: 0px;
+  }
+
+  #loveText {
+    font-size: 30px;
+    color: black;
+  }
+
+  #blackScreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    display: none;
+    z-index: 10000;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #blackScreen div {
+    color: white;
+    font-size: 35px;
+    font-family: 'Cairo', sans-serif;
+  }
+
+  .heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: purple;
+    transform: rotate(-45deg);
+    animation: fadeInOut 3s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  .heart::before,
+  .heart::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: purple;
+    border-radius: 50%;
+  }
+
+  .heart::before {
+    top: -10px;
+    left: 0;
+  }
+
+  .heart::after {
+    left: 10px;
+    top: 0;
+  }
+
+  @keyframes fadeInOut {
+    0%, 100% {
+      opacity: 0;
+      transform: scale(0.5) rotate(-45deg);
     }
+    50% {
+      opacity: 1;
+      transform: scale(1) rotate(-45deg);
+    }
+  }
   </style>
 </head>
 <body>
@@ -252,8 +242,9 @@
         const heart = document.createElement('div');
         heart.classList.add('heart');
 
-        const maxWidth = window.innerWidth - 20;
-        const maxHeight = window.innerHeight - 20;
+        // Only use 90% of the screen for heart positions
+        const maxWidth = window.innerWidth * 0.9 - 20;
+        const maxHeight = window.innerHeight * 0.9 - 20;
 
         const randomX = Math.random() * maxWidth;
         const randomY = Math.random() * maxHeight;
