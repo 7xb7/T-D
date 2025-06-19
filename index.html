@@ -9,7 +9,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    overflow-x: hidden;
+    overflow: hidden; 
   }
 
   body {
@@ -242,12 +242,13 @@
         const heart = document.createElement('div');
         heart.classList.add('heart');
 
-        // Only use 90% of the screen for heart positions
+        
+        const minOffset = 10;
         const maxWidth = window.innerWidth * 0.9 - 20;
         const maxHeight = window.innerHeight * 0.9 - 20;
 
-        const randomX = Math.random() * maxWidth;
-        const randomY = Math.random() * maxHeight;
+        const randomX = minOffset + Math.random() * (maxWidth - minOffset);
+        const randomY = minOffset + Math.random() * (maxHeight - minOffset);
 
         heart.style.left = `${randomX}px`;
         heart.style.top = `${randomY}px`;
