@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8" />
   <title>T&D</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700&display=swap" rel="stylesheet" />
   <style>
     body {
@@ -13,21 +12,11 @@
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      height: 100vh;
-      overflow: hidden;
+      min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
     }
-
-  @media (max-width: 768px) {
-  body {
-    background-image: url('https://i.postimg.cc/zvfJ4TBT/IMG-0578.jpg');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-}
 
     .container {
       text-align: center;
@@ -135,7 +124,7 @@
 
   <div id="messageBox">
     <img id="loveImage" src="https://i.imgflip.com/2qgoid.jpg?a485856" alt="Love Image" />
-    <p id="loveText"> &lt;3 احبكبكبكبكك اكثرررر</p>
+    <p id="loveText"> <3 احبكبكبكبكك اكثرررر</p>
   </div>
 
   <script>
@@ -144,8 +133,10 @@
     function showMessageBox() {
       const messageBox = document.getElementById('messageBox');
       const container = document.querySelector('.container');
+
       container.style.display = 'none'; 
       messageBox.style.display = 'block';
+
       setTimeout(() => {
         messageBox.style.display = 'none';
         container.style.display = 'block';
@@ -154,9 +145,11 @@
 
     function moveNoButton() {
       noClickCount++;
+
       const noButton = document.querySelector('.no-button');
       const container = document.querySelector('.container');
       const blackScreen = document.getElementById('blackScreen');
+
       if (noClickCount <= 1) {
         const pageWidth = window.innerWidth - noButton.offsetWidth;
         const pageHeight = window.innerHeight - noButton.offsetHeight;
@@ -185,6 +178,7 @@
       heart.style.fontSize = `${Math.floor(Math.random() * 20) + 20}px`;
       heart.style.opacity = Math.random();
       document.body.appendChild(heart);
+
       setTimeout(() => heart.remove(), 10000);
     }
 
