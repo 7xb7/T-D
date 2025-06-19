@@ -24,14 +24,14 @@
     }
 
     .container img {
-      max-width: 230px;
+      width: 650px;
       height: auto;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
     }
 
     .question {
       font-size: 28px;
-      color: black;
+      color: white;
       margin-bottom: 20px;
     }
 
@@ -62,7 +62,7 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      background-color: white;
+      background-color: #ebebeb;
       padding: 20px;
       border-radius: 15px;
       display: none;
@@ -71,10 +71,10 @@
     }
 
     #messageBox img {
-      width: 400px;
-      max-width: 90%;
-      margin-bottom: 10px;
-      border-radius: 15px;
+      width: 600px;
+      max-width: 100%;
+      margin-bottom: 0px;
+      border-radius: 0px;
     }
 
     #loveText {
@@ -110,6 +110,27 @@
 </head>
 <body>
 
+  <!-- ✅ تشغيل الأغنية تلقائيًا -->
+  <iframe 
+    id="carelessPlayer"
+    width="0" 
+    height="0" 
+    src="https://www.youtube.com/embed/izGwDsrQ1eQ?start=42&loop=1&playlist=izGwDsrQ1eQ" 
+    frameborder="0" 
+    allow="autoplay"
+    allowfullscreen>
+  </iframe>
+
+  <script>
+  // يشتغل الصوت بعد أول ضغطة على الصفحة
+  document.addEventListener("click", () => {
+    const player = document.getElementById('carelessPlayer');
+    const src = player.getAttribute('src');
+    player.setAttribute('src', src);
+  }, { once: true });
+</script>
+
+
   <div id="blackScreen">
     <div>اها؟</div>
   </div>
@@ -125,7 +146,7 @@
 
   <div id="messageBox">
     <img id="loveImage" src="https://i.imgflip.com/2qgoid.jpg?a485856" alt="Love Image" />
-    <p id="loveText">❤️ احبكبكبكبكك اكثرررر</p>
+    <p id="loveText"> <3 احبكبكبكبكك اكثرررر</p>
   </div>
 
   <script>
@@ -133,10 +154,15 @@
 
     function showMessageBox() {
       const messageBox = document.getElementById('messageBox');
-      messageBox.style.display = 'block';
+      const container = document.querySelector('.container');
+
+      container.style.display = 'none';  // إخفاء المحتوى عدا الخلفية والقلوب
+      messageBox.style.display = 'block'; // إظهار صندوق الرسالة
+
       setTimeout(() => {
         messageBox.style.display = 'none';
-      }, 5000);
+        container.style.display = 'block';
+      }, 1000000); // مدة ظهور الرسالة طويلة كما طلبت
     }
 
     function moveNoButton() {
@@ -161,7 +187,7 @@
           blackScreen.style.display = 'none';
           container.style.display = 'block';
           noClickCount = 0;
-        }, 5000);
+        }, 1500);
       }
     }
 
@@ -178,11 +204,11 @@
       setTimeout(() => heart.remove(), 10000);
     }
 
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 123; i++) {
       createRandomHeart();
     }
 
-    setInterval(createRandomHeart, 100);
+    setInterval(createRandomHeart, 69);
   </script>
 </body>
 </html>
