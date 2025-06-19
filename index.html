@@ -162,7 +162,7 @@
     <div>اها؟</div>
   </div>
   <div class="container">
-    <img src="https://i.postimg.cc/C1mk8LGM/image.png" alt="وجه بريء" />
+    <img src="https://i.postimg.cc/W3KGqb8C/1-DDFE5-B0-2-A40-48-EC-8781-046-B94-E2-C650.png" alt="وجه بريء" />
     <div class="question">دودو تحبيني ولا تحبي الفلوس؟</div>
     <div>
       <button class="button" onclick="showMessageBox()">كبكب</button>
@@ -174,75 +174,95 @@
     <p id="loveText"> <3 احبكبكبكبكك اكثرررر</p>
   </div>
   <script>
-    let noClickCount = 0;
+  let noClickCount = 0;
 
-    function showMessageBox() {
-      const messageBox = document.getElementById('messageBox');
-      const container = document.querySelector('.container');
+  function showMessageBox() {
+    const messageBox = document.getElementById('messageBox');
+    const container = document.querySelector('.container');
 
+    container.style.display = 'none';
+    messageBox.style.display = 'block';
+
+    // Restart the page after 3 seconds
+    setTimeout(() => {
+      resetPage(); // Reset everything before reloading
+    }, 3000);
+  }
+
+  function moveNoButton() {
+    noClickCount++;
+
+    const noButton = document.querySelector('.no-button');
+    const container = document.querySelector('.container');
+    const blackScreen = document.getElementById('blackScreen');
+    const blackScreenText = blackScreen.querySelector('div');
+
+    // Always move the button to a new random position
+    const pageWidth = window.innerWidth - noButton.offsetWidth;
+    const pageHeight = window.innerHeight - noButton.offsetHeight;
+    const randomX = Math.max(0, Math.floor(Math.random() * pageWidth));
+    const randomY = Math.max(0, Math.floor(Math.random() * pageHeight));
+    noButton.style.position = 'absolute';
+    noButton.style.left = `${randomX}px`;
+    noButton.style.top = `${randomY}px`;
+
+    if (noClickCount > 1) {
+      // Add an additional "؟" to the text each time
+      blackScreenText.textContent += "؟";
       container.style.display = 'none';
-      messageBox.style.display = 'block';
+      blackScreen.style.display = 'flex';
+
+      // Hide the black screen after 1.5 seconds without restarting
+      setTimeout(() => {
+        blackScreen.style.display = 'none';
+        container.style.display = 'block';
+      }, 1500);
+    }
+  }
+
+  function resetPage() {
+    // Reset the "no-button" position
+    const noButton = document.querySelector('.no-button');
+    noButton.style.position = 'relative';
+    noButton.style.left = '0';
+    noButton.style.top = '0';
+
+    // Reset the black screen text
+    const blackScreenText = document.getElementById('blackScreen').querySelector('div');
+    blackScreenText.textContent = "اها؟";
+
+    // Reload the page to restart everything
+    location.reload();
+  }
+
+  const maxHearts = 123;
+
+  function createHearts() {
+    const body = document.body;
+
+    setInterval(() => {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+
+      const maxWidth = window.innerWidth - 20;
+      const maxHeight = window.innerHeight - 20;
+
+      const randomX = Math.random() * maxWidth;
+      const randomY = Math.random() * maxHeight;
+
+      heart.style.left = `${randomX}px`;
+      heart.style.top = `${randomY}px`;
+      heart.style.animationDelay = `${Math.random() * 3}s`;
+
+      body.appendChild(heart);
 
       setTimeout(() => {
-        messageBox.style.display = 'none';
-        container.style.display = 'block';
-      }, 1000000);
-    }
+        heart.remove();
+      }, 3000);
+    }, 100);
+  }
 
-    function moveNoButton() {
-      noClickCount++;
-
-      const noButton = document.querySelector('.no-button');
-      const container = document.querySelector('.container');
-      const blackScreen = document.getElementById('blackScreen');
-
-      if (noClickCount <= 1) {
-        const pageWidth = window.innerWidth - noButton.offsetWidth;
-        const pageHeight = window.innerHeight - noButton.offsetHeight;
-        const randomX = Math.max(0, Math.floor(Math.random() * pageWidth));
-        const randomY = Math.max(0, Math.floor(Math.random() * pageHeight));
-        noButton.style.position = 'absolute';
-        noButton.style.left = `${randomX}px`;
-        noButton.style.top = `${randomY}px`;
-      } else {
-        container.style.display = 'none';
-        blackScreen.style.display = 'flex';
-        setTimeout(() => {
-          blackScreen.style.display = 'none';
-          container.style.display = 'block';
-          noClickCount = 0;
-        }, 1500);
-      }
-    }
-
-    const maxHearts = 123;
-
-    function createHearts() {
-      const body = document.body;
-
-      setInterval(() => {
-        const heart = document.createElement('div');
-        heart.classList.add('heart');
-
-        const maxWidth = window.innerWidth - 20;
-        const maxHeight = window.innerHeight - 20;
-
-        const randomX = Math.random() * maxWidth;
-        const randomY = Math.random() * maxHeight;
-
-        heart.style.left = `${randomX}px`;
-        heart.style.top = `${randomY}px`;
-        heart.style.animationDelay = `${Math.random() * 3}s`;
-
-        body.appendChild(heart);
-
-        setTimeout(() => {
-          heart.remove();
-        }, 3000);
-      }, 100);
-    }
-
-    createHearts();
-  </script>
+  createHearts();
+</script>
 </body>
 </html>
