@@ -17,10 +17,9 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      overflow: hidden; /* Prevent scrolling caused by hearts */
+      overflow-x: hidden;
     }
 
-    /* Apply a different background for phone and tablet users */
     @media screen and (max-width: 1024px) {
       body {
         background-image: url('https://i.postimg.cc/TYFDBxdY/IMG-0578.jpg');
@@ -29,12 +28,13 @@
         background-repeat: no-repeat;
         background-attachment: fixed;
         height: 100vh;
-        overflow: hidden;
+        overflow-x: hidden;
       }
     }
 
     .container {
       text-align: center;
+      max-width: 100%;
     }
 
     .container img {
@@ -69,6 +69,7 @@
 
     .no-button {
       position: relative;
+      max-width: 100%;
     }
 
     #messageBox {
@@ -122,7 +123,7 @@
       background-color: purple;
       transform: rotate(-45deg);
       animation: fadeInOut 3s ease-in-out infinite;
-      pointer-events: none; /* Prevent interaction with hearts */
+      pointer-events: none;
     }
 
     .heart::before,
@@ -174,95 +175,88 @@
     <p id="loveText"> <3 احبكبكبكبكك اكثرررر</p>
   </div>
   <script>
-  let noClickCount = 0;
+    let noClickCount = 0;
 
-  function showMessageBox() {
-    const messageBox = document.getElementById('messageBox');
-    const container = document.querySelector('.container');
+    function showMessageBox() {
+      const messageBox = document.getElementById('messageBox');
+      const container = document.querySelector('.container');
 
-    container.style.display = 'none';
-    messageBox.style.display = 'block';
-
-    // Restart the page after 3 seconds
-    setTimeout(() => {
-      resetPage(); // Reset everything before reloading
-    }, 3000);
-  }
-
-  function moveNoButton() {
-    noClickCount++;
-
-    const noButton = document.querySelector('.no-button');
-    const container = document.querySelector('.container');
-    const blackScreen = document.getElementById('blackScreen');
-    const blackScreenText = blackScreen.querySelector('div');
-
-    // Always move the button to a new random position
-    const pageWidth = window.innerWidth - noButton.offsetWidth;
-    const pageHeight = window.innerHeight - noButton.offsetHeight;
-    const randomX = Math.max(0, Math.floor(Math.random() * pageWidth));
-    const randomY = Math.max(0, Math.floor(Math.random() * pageHeight));
-    noButton.style.position = 'absolute';
-    noButton.style.left = `${randomX}px`;
-    noButton.style.top = `${randomY}px`;
-
-    if (noClickCount > 1) {
-      // Add an additional "؟" to the text each time
-      blackScreenText.textContent += "؟";
       container.style.display = 'none';
-      blackScreen.style.display = 'flex';
-
-      // Hide the black screen after 1.5 seconds without restarting
-      setTimeout(() => {
-        blackScreen.style.display = 'none';
-        container.style.display = 'block';
-      }, 1500);
-    }
-  }
-
-  function resetPage() {
-    // Reset the "no-button" position
-    const noButton = document.querySelector('.no-button');
-    noButton.style.position = 'relative';
-    noButton.style.left = '0';
-    noButton.style.top = '0';
-
-    // Reset the black screen text
-    const blackScreenText = document.getElementById('blackScreen').querySelector('div');
-    blackScreenText.textContent = "اها؟";
-
-    // Reload the page to restart everything
-    location.reload();
-  }
-
-  const maxHearts = 123;
-
-  function createHearts() {
-    const body = document.body;
-
-    setInterval(() => {
-      const heart = document.createElement('div');
-      heart.classList.add('heart');
-
-      const maxWidth = window.innerWidth - 20;
-      const maxHeight = window.innerHeight - 20;
-
-      const randomX = Math.random() * maxWidth;
-      const randomY = Math.random() * maxHeight;
-
-      heart.style.left = `${randomX}px`;
-      heart.style.top = `${randomY}px`;
-      heart.style.animationDelay = `${Math.random() * 3}s`;
-
-      body.appendChild(heart);
+      messageBox.style.display = 'block';
 
       setTimeout(() => {
-        heart.remove();
+        resetPage();
       }, 3000);
-    }, 100);
-  }
+    }
 
-  createHearts();
-</script>
+    function moveNoButton() {
+      noClickCount++;
+
+      const noButton = document.querySelector('.no-button');
+      const container = document.querySelector('.container');
+      const blackScreen = document.getElementById('blackScreen');
+      const blackScreenText = blackScreen.querySelector('div');
+
+      const pageWidth = window.innerWidth - noButton.offsetWidth;
+      const pageHeight = window.innerHeight - noButton.offsetHeight;
+      const randomX = Math.max(0, Math.floor(Math.random() * pageWidth));
+      const randomY = Math.max(0, Math.floor(Math.random() * pageHeight));
+      noButton.style.position = 'absolute';
+      noButton.style.left = `${randomX}px`;
+      noButton.style.top = `${randomY}px`;
+
+      if (noClickCount > 1) {
+        blackScreenText.textContent += "؟";
+        container.style.display = 'none';
+        blackScreen.style.display = 'flex';
+
+        setTimeout(() => {
+          blackScreen.style.display = 'none';
+          container.style.display = 'block';
+        }, 1500);
+      }
+    }
+
+    function resetPage() {
+      const noButton = document.querySelector('.no-button');
+      noButton.style.position = 'relative';
+      noButton.style.left = '0';
+      noButton.style.top = '0';
+
+      const blackScreenText = document.getElementById('blackScreen').querySelector('div');
+      blackScreenText.textContent = "اها؟";
+
+      location.reload();
+    }
+
+    const maxHearts = 123;
+
+    function createHearts() {
+      const body = document.body;
+
+      setInterval(() => {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+
+        const maxWidth = window.innerWidth - 20;
+        const maxHeight = window.innerHeight - 20;
+
+        const randomX = Math.random() * maxWidth;
+        const randomY = Math.random() * maxHeight;
+
+        heart.style.left = `${randomX}px`;
+        heart.style.top = `${randomY}px`;
+        heart.style.animationDelay = `${Math.random() * 3}s`;
+
+        body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 3000);
+      }, 100);
+    }
+
+    createHearts();
+  </script>
 </body>
 </html>
