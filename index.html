@@ -178,6 +178,11 @@
     <img id="loveImage" src="https://i.imgflip.com/2qgoid.jpg?a485856" alt="Love Image" />
     <p id="loveText"> <3 احبكبكبكبكك اكثرررر</p>
   </div>
+  
+  
+  
+  
+  <audio id="myAudio" src="rar.mp3"></audio>
   <script>
     let noClickCount = 0;
 
@@ -190,7 +195,7 @@
 
       setTimeout(() => {
         resetPage();
-      }, 3000);
+      }, 4000);
     }
 
     function moveNoButton() {
@@ -209,6 +214,14 @@
       noButton.style.left = `${randomX}px`;
       noButton.style.top = `${randomY}px`;
 
+      if (noClickCount > 1 && noClickCount < 4) {
+        const audio = document.getElementById('myAudio');
+        audio.currentTime = 0;
+        audio.play().catch(e => {
+          console.log('Audio play error:', e);
+        });
+      }
+
       if (noClickCount > 1) {
         blackScreenText.textContent += "؟";
         container.style.display = 'none';
@@ -219,7 +232,34 @@
           container.style.display = 'block';
         }, 1500);
       }
-    }
+
+      if (noClickCount === 4) {
+        document.body.innerHTML += `
+          <div id="finalMsg" style="
+            position:fixed;
+            top:0;left:0;width:100vw;height:100vh;
+            background:black;
+            color:white;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-size:40px;
+            z-index:99999;
+            font-family:'Cairo',sans-serif;
+          ">اوكي خلاص معد ابي</div>
+        `;
+        setTimeout(() => {
+          document.getElementById('finalMsg').textContent = "باقي تنتظرين؟ قلت خلاص";
+          setTimeout(() => {
+            document.getElementById('finalMsg').textContent = "😒 سامحتك";
+            setTimeout(() => {
+              location.reload();
+            }, 2000);
+          }, 2000);
+        }, 3000);
+        return;
+      }
+       }
 
     function resetPage() {
       const noButton = document.querySelector('.no-button');
