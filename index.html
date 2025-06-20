@@ -3,189 +3,213 @@
 <head>
   <meta charset="UTF-8" />
   <title>T&D</title>
+  <!-- Import Cairo font from Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700&display=swap" rel="stylesheet" />
   <style>
-  html, body {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    overflow: hidden; 
-  }
+    /* Reset default margin/padding and prevent scrollbars */
+    html, body {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      overflow: hidden; 
+    }
 
-  body {
-    font-family: 'Cairo', sans-serif;
-    background-image: url('https://i.postimg.cc/br9rK6v6/507766912-748279297549616-3947913920181794192-n.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  @media screen and (max-width: 1024px) {
+    /* Main body styles: font, background, centering */
     body {
-      background-image: url('https://i.ibb.co/B5HBqMqN/Whats-App-Image-2025-06-20-at-20-22-20-0ad33277.jpg');
+      font-family: 'Cairo', sans-serif;
+      background-image: url('https://i.postimg.cc/br9rK6v6/507766912-748279297549616-3947913920181794192-n.jpg');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
       background-attachment: fixed;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Responsive background for smaller screens */
+    @media screen and (max-width: 1024px) {
+      body {
+        background-image: url('https://i.postimg.cc/2SqLH2Yq/Whats-App-Image-2025-06-20-at-20-22-20-0ad33277.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        height: 100vh;
+      }
+    }
+
+    /* Container for main content */
+    .container {
+      text-align: center;
+      max-width: 100%;
+    }
+
+    /* Main image styling */
+    .container img {
+      width: 650px;
+      height: auto;
+      margin-bottom: 10px;
+    }
+
+    /* Question text styling */
+    .question {
+      font-size: 28px;
+      color: white;
+      margin-bottom: 20px;
+    }
+
+    /* Button styling */
+    .button {
+      display: inline-block;
+      margin: 10px;
+      padding: 12px 25px;
+      background-color: #39FF14;
+      color: black;
+      border: none;
+      cursor: pointer;
+      font-size: 18px;
+      border-radius: 25px;
+      font-family: 'Cairo', sans-serif;
+      transition: 0.3s ease;
+    }
+
+    /* Button hover effect */
+    .button:hover {
+      opacity: 0.8;
+    }
+
+    /* "No" button special styling for movement */
+    .no-button {
+      position: relative;
+      max-width: 100%;
+    }
+
+    /* Message box popup styling */
+    #messageBox {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #ebebeb;
+      padding: 20px;
+      border-radius: 15px;
+      display: none;
+      text-align: center;
+      z-index: 999;
+    }
+
+    /* Image inside message box */
+    #messageBox img {
+      width: 600px;
+      max-width: 100%;
+      margin-bottom: 0px;
+      border-radius: 0px;
+    }
+
+    /* Text inside message box */
+    #loveText {
+      font-size: 30px;
+      color: black;
+    }
+
+    /* Black screen overlay for dramatic effect */
+    #blackScreen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
       height: 100vh;
+      background-color: black;
+      display: none;
+      z-index: 10000;
+      justify-content: center;
+      align-items: center;
     }
-  }
 
-  .container {
-    text-align: center;
-    max-width: 100%;
-  }
-
-  .container img {
-    width: 650px;
-    height: auto;
-    margin-bottom: 10px;
-  }
-
-  .question {
-    font-size: 28px;
-    color: white;
-    margin-bottom: 20px;
-  }
-
-  .button {
-    display: inline-block;
-    margin: 10px;
-    padding: 12px 25px;
-    background-color: #39FF14;
-    color: black;
-    border: none;
-    cursor: pointer;
-    font-size: 18px;
-    border-radius: 25px;
-    font-family: 'Cairo', sans-serif;
-    transition: 0.3s ease;
-  }
-
-  .button:hover {
-    opacity: 0.8;
-  }
-
-  .no-button {
-    position: relative;
-    max-width: 100%;
-  }
-
-  #messageBox {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #ebebeb;
-    padding: 20px;
-    border-radius: 15px;
-    display: none;
-    text-align: center;
-    z-index: 999;
-  }
-
-  #messageBox img {
-    width: 600px;
-    max-width: 100%;
-    margin-bottom: 0px;
-    border-radius: 0px;
-  }
-
-  #loveText {
-    font-size: 30px;
-    color: black;
-  }
-
-  #blackScreen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: black;
-    display: none;
-    z-index: 10000;
-    justify-content: center;
-    align-items: center;
-  }
-
-  #blackScreen div {
-    color: white;
-    font-size: 35px;
-    font-family: 'Cairo', sans-serif;
-  }
-
-  .heart {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background-color: purple;
-    transform: rotate(-45deg);
-    animation: fadeInOut 3s ease-in-out infinite;
-    pointer-events: none;
-  }
-
-  .heart::before,
-  .heart::after {
-    content: '';
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background-color: purple;
-    border-radius: 50%;
-  }
-
-  .heart::before {
-    top: -10px;
-    left: 0;
-  }
-
-  .heart::after {
-    left: 10px;
-    top: 0;
-  }
-
-  @keyframes fadeInOut {
-    0%, 100% {
-      opacity: 0;
-      transform: scale(0.5) rotate(-45deg);
+    /* Text inside black screen */
+    #blackScreen div {
+      color: white;
+      font-size: 35px;
+      font-family: 'Cairo', sans-serif;
     }
-    50% {
-      opacity: 1;
-      transform: scale(1) rotate(-45deg);
+
+    /* Heart animation styles */
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: purple;
+      transform: rotate(-45deg);
+      animation: fadeInOut 3s ease-in-out infinite;
+      pointer-events: none;
     }
-  }
+    .heart::before,
+    .heart::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: purple;
+      border-radius: 50%;
+    }
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+    .heart::after {
+      left: 10px;
+      top: 0;
+    }
+
+    /* Heart fade in/out animation */
+    @keyframes fadeInOut {
+      0%, 100% {
+        opacity: 0;
+        transform: scale(0.5) rotate(-45deg);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1) rotate(-45deg);
+      }
+    }
   </style>
 </head>
 <body>
+  <!-- Black screen overlay for "No" button drama -->
   <div id="blackScreen">
     <div>اها؟</div>
   </div>
+
+  <!-- Main content container -->
   <div class="container">
+    <!-- Cute face image -->
     <img src="https://i.postimg.cc/W3KGqb8C/1-DDFE5-B0-2-A40-48-EC-8781-046-B94-E2-C650.png" alt="وجه بريء" />
+    <!-- The main question -->
     <div class="question">دودو تحبيني ولا تحبي الفلوس؟</div>
     <div>
+      <!-- "Yes" button triggers message box -->
       <button class="button" onclick="showMessageBox()">كبكب</button>
+      <!-- "No" button moves around and triggers effects -->
       <button class="button no-button" onclick="moveNoButton()">الفلوس</button>
     </div>
   </div>
+
+  <!-- Message box shown when "Yes" is clicked -->
   <div id="messageBox">
     <img id="loveImage" src="https://i.imgflip.com/2qgoid.jpg?a485856" alt="Love Image" />
-    <p id="loveText"> <3 احبكبكبكبكك اكثرررر</p>
+    <p id="loveText"> &lt;3 احبكبكبكبكك اكثرررر</p>
   </div>
-  
-  
-  
-  
+
+  <!-- Audio for "No" button effect -->
   <audio id="myAudio" src="rar.mp3"></audio>
+
   <script>
+    // Track how many times "No" button is clicked
     let noClickCount = 0;
 
+    // Show the message box and hide main content
     function showMessageBox() {
       const messageBox = document.getElementById('messageBox');
       const container = document.querySelector('.container');
@@ -193,11 +217,13 @@
       container.style.display = 'none';
       messageBox.style.display = 'block';
 
+      // After 4 seconds, reset the page
       setTimeout(() => {
         resetPage();
       }, 4000);
     }
 
+    // Move the "No" button to a random position and trigger effects
     function moveNoButton() {
       noClickCount++;
 
@@ -206,6 +232,7 @@
       const blackScreen = document.getElementById('blackScreen');
       const blackScreenText = blackScreen.querySelector('div');
 
+      // Calculate random position within the viewport
       const pageWidth = window.innerWidth - noButton.offsetWidth;
       const pageHeight = window.innerHeight - noButton.offsetHeight;
       const randomX = Math.max(0, Math.floor(Math.random() * pageWidth));
@@ -214,6 +241,7 @@
       noButton.style.left = `${randomX}px`;
       noButton.style.top = `${randomY}px`;
 
+      // Play audio after first click, up to 3 times
       if (noClickCount > 1 && noClickCount < 4) {
         const audio = document.getElementById('myAudio');
         audio.currentTime = 0;
@@ -222,6 +250,7 @@
         });
       }
 
+      // Show black screen overlay after first click
       if (noClickCount > 1) {
         blackScreenText.textContent += "؟";
         container.style.display = 'none';
@@ -233,6 +262,7 @@
         }, 1500);
       }
 
+      // After 4 clicks, show final message and reload
       if (noClickCount === 4) {
         document.body.innerHTML += `
           <div id="finalMsg" style="
@@ -259,8 +289,9 @@
         }, 3000);
         return;
       }
-       }
+    }
 
+    // Reset the page and button positions
     function resetPage() {
       const noButton = document.querySelector('.no-button');
       noButton.style.position = 'relative';
@@ -273,8 +304,10 @@
       location.reload();
     }
 
+    // Max number of hearts to show (not strictly enforced)
     const maxHearts = 123;
 
+    // Create animated hearts at random positions
     function createHearts() {
       const body = document.body;
 
@@ -282,7 +315,7 @@
         const heart = document.createElement('div');
         heart.classList.add('heart');
 
-        
+        // Random position within 90% of the viewport
         const minOffset = 10;
         const maxWidth = window.innerWidth * 0.9 - 20;
         const maxHeight = window.innerHeight * 0.9 - 20;
@@ -296,12 +329,14 @@
 
         body.appendChild(heart);
 
+        // Remove heart after animation
         setTimeout(() => {
           heart.remove();
         }, 3000);
       }, 100);
     }
 
+    // Start the heart animation
     createHearts();
   </script>
 </body>
