@@ -1,343 +1,243 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>T&D</title>
-  <!-- Import Cairo font from Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700&display=swap" rel="stylesheet" />
-  <style>
-    /* Reset default margin/padding and prevent scrollbars */
-    html, body {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      overflow: hidden; 
-    }
-
-    /* Main body styles: font, background, centering */
-    body {
-      font-family: 'Cairo', sans-serif;
-      background-image: url('https://i.postimg.cc/br9rK6v6/507766912-748279297549616-3947913920181794192-n.jpg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    /* Responsive background for smaller screens */
-    @media screen and (max-width: 1024px) {
-      body {
-        background-image: url('https://i.postimg.cc/2SqLH2Yq/Whats-App-Image-2025-06-20-at-20-22-20-0ad33277.jpg');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        height: 100vh;
-      }
-    }
-
-    /* Container for main content */
-    .container {
-      text-align: center;
-      max-width: 100%;
-    }
-
-    /* Main image styling */
-    .container img {
-      width: 650px;
-      height: auto;
-      margin-bottom: 10px;
-    }
-
-    /* Question text styling */
-    .question {
-      font-size: 28px;
-      color: white;
-      margin-bottom: 20px;
-    }
-
-    /* Button styling */
-    .button {
-      display: inline-block;
-      margin: 10px;
-      padding: 12px 25px;
-      background-color: #39FF14;
-      color: black;
-      border: none;
-      cursor: pointer;
-      font-size: 18px;
-      border-radius: 25px;
-      font-family: 'Cairo', sans-serif;
-      transition: 0.3s ease;
-    }
-
-    /* Button hover effect */
-    .button:hover {
-      opacity: 0.8;
-    }
-
-    /* "No" button special styling for movement */
-    .no-button {
-      position: relative;
-      max-width: 100%;
-    }
-
-    /* Message box popup styling */
-    #messageBox {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background-color: #ebebeb;
-      padding: 20px;
-      border-radius: 15px;
-      display: none;
-      text-align: center;
-      z-index: 999;
-    }
-
-    /* Image inside message box */
-    #messageBox img {
-      width: 600px;
-      max-width: 100%;
-      margin-bottom: 0px;
-      border-radius: 0px;
-    }
-
-    /* Text inside message box */
-    #loveText {
-      font-size: 30px;
-      color: black;
-    }
-
-    /* Black screen overlay for dramatic effect */
-    #blackScreen {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background-color: black;
-      display: none;
-      z-index: 10000;
-      justify-content: center;
-      align-items: center;
-    }
-
-    /* Text inside black screen */
-    #blackScreen div {
-      color: white;
-      font-size: 35px;
-      font-family: 'Cairo', sans-serif;
-    }
-
-    /* Heart animation styles */
-    .heart {
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background-color: purple;
-      transform: rotate(-45deg);
-      animation: fadeInOut 3s ease-in-out infinite;
-      pointer-events: none;
-    }
-    .heart::before,
-    .heart::after {
-      content: '';
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background-color: purple;
-      border-radius: 50%;
-    }
-    .heart::before {
-      top: -10px;
-      left: 0;
-    }
-    .heart::after {
-      left: 10px;
-      top: 0;
-    }
-
-    /* Heart fade in/out animation */
-    @keyframes fadeInOut {
-      0%, 100% {
-        opacity: 0;
-        transform: scale(0.5) rotate(-45deg);
-      }
-      50% {
-        opacity: 1;
-        transform: scale(1) rotate(-45deg);
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>ilovedodo</title>
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: url('https://i.postimg.cc/t4092bjr/Whats-App-Image-2025-08-14-at-00-43-44-36348ce6.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+        @media only screen and (max-width: 600px) {
+            body {
+                background: url('https://i.postimg.cc/JzQL1BfX/FED4-D1-DC-919-A-405-E-9138-3-E213911-E9-D4.jpg') no-repeat center center fixed;
+                background-size: cover;
+            }
+        }
+        .container {
+            background: rgba(10, 31, 20, 0.85);
+            box-shadow: 0 8px 32px 0 rgba(0, 255, 128, 0.37);
+            border-radius: 20px;
+            padding: 40px 32px;
+            text-align: center;
+            width: 350px;
+        }
+        .input {
+            width: 90%;
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
+            margin-bottom: 18px;
+            font-size: 1.1em;
+            box-shadow: 0 2px 8px rgba(0,255,128,0.15);
+            background: #102d1a;
+            color: #39ff14;
+        }
+        .btn {
+            padding: 12px 32px;
+            border-radius: 8px;
+            border: none;
+            background: #102d1a;
+            color: #39ff14;
+            font-size: 1.1em;
+            cursor: pointer;
+            box-shadow: 0 4px 16px rgba(0,255,128,0.25);
+            transition: background 0.2s, color 0.2s;
+            outline: none;
+        }
+        .btn:hover {
+            background: #39ff14;
+            color: #102d1a;
+        }
+        .text {
+            color: #39ff14;
+            font-size: 1.2em;
+            margin-bottom: 24px;
+            text-shadow: 0 2px 8px #39ff14;
+        }
+        .custom-message {
+            margin-top: 24px;
+            color: #39ff14;
+            font-size: 1.15em;
+            background: rgba(57,255,20,0.15);
+            border-radius: 10px;
+            padding: 18px;
+            box-shadow: 0 2px 8px rgba(0,255,128,0.18);
+        }
+        #noModal {
+            display:none;
+            position:fixed;
+            top:50%;
+            left:50%;
+            transform:translate(-50%,-50%);
+            background:rgba(10,31,20,0.95);
+            color:#39ff14;
+            font-size:1.3em;
+            padding:32px 48px;
+            border-radius:16px;
+            box-shadow:0 4px 24px rgba(0,255,128,0.35);
+            z-index:9999;
+            text-align:center;
+        }
+        #blackOverlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background: #0f3d2e;
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+        }
+        #blackOverlayText {
+            color: #39ff14;
+            font-size: 2em;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            text-align: center;
+        }
+        #resetRow {
+            color:#39ff14;
+            font-size:1em;
+            margin-bottom:18px;
+            text-shadow:0 1px 4px #39ff14;
+        }
+        #changePwd {
+            cursor:pointer;
+            text-decoration:underline;
+        }
+        #noMsg {
+            display:none;
+            margin-left:8px;
+            color:#39ff14;
+        }
+        .heart {
+            position: fixed;
+            top: -50px;
+            pointer-events: none;
+            z-index: 99999;
+            animation: fall linear;
+        }
+        @keyframes fall {
+            to {
+                transform: translateY(110vh);
+                opacity: 0.7;
+            }
+        }
+    </style>
 </head>
 <body>
-  <!-- Black screen overlay for "No" button drama -->
-  <div id="blackScreen">
-    <div>اها؟</div>
-  </div>
-
-  <!-- Main content container -->
-  <div class="container">
-    <!-- Cute face image -->
-    <img src="https://i.postimg.cc/W3KGqb8C/1-DDFE5-B0-2-A40-48-EC-8781-046-B94-E2-C650.png" alt="وجه بريء" />
-    <!-- The main question -->
-    <div class="question">دودو تحبيني ولا تحبي الفلوس؟</div>
-    <div>
-      <!-- "Yes" button triggers message box -->
-      <button class="button" onclick="showMessageBox()">كبكب</button>
-      <!-- "No" button moves around and triggers effects -->
-      <button class="button no-button" onclick="moveNoButton()">الفلوس</button>
+    <div class="container">
+        <div class="text" id="displayText">Login</div>
+        <input type="text" class="input" id="username" placeholder="Username" autocomplete="off" />
+        <input type="password" class="input" id="password" placeholder="Password" autocomplete="off" />
+        <div id="resetRow">
+            <span id="changePwd">reset your password?</span>
+            <span id="noMsg">Nope</span>
+        </div>
+        <button class="btn" id="loginBtn">Login</button>
+        <div id="customBox" class="custom-message" style="display:none;"></div>
+        <button id="pressMeBtn" class="btn" style="display:none; margin-top:16px;">Press me</button>
     </div>
-  </div>
+    <div id="blackOverlay">
+        <div id="blackOverlayText">Nope</div>
+    </div>
+    <audio id="dodoAudio" src="dodo.mp3"></audio>
+    <script>
+        const loginBtn = document.getElementById('loginBtn');
+        const usernameInput = document.getElementById('username');
+        const passwordInput = document.getElementById('password');
+        const customBox = document.getElementById('customBox');
+        const changePwd = document.getElementById('changePwd');
+        const blackOverlay = document.getElementById('blackOverlay');
+        const resetRow = document.getElementById('resetRow');
+        const displayText = document.getElementById('displayText');
+        const pressMeBtn = document.getElementById('pressMeBtn');
+        const dodoAudio = document.getElementById('dodoAudio');
 
-  <!-- Message box shown when "Yes" is clicked -->
-  <div id="messageBox">
-    <img id="loveImage" src="https://i.imgflip.com/2qgoid.jpg?a485856" alt="Love Image" />
-    <p id="loveText"> &lt;3 احبكبكبكبكك اكثرررر</p>
-  </div>
+        const messages = [
+            "since day one, i knew you were special",
+            "and to this day im holding onto that",
+            "maybe we had some ups and downs ",
+            "but it was never an ending",
+            "and maybe i cant propose to you",
+            "but i can say..",
+        ];
+        let msgIndex = 0;
 
-  <!-- Audio for "No" button effect -->
-  <audio id="myAudio" src="rar.mp3"></audio>
-
-  <script>
-    // Track how many times "No" button is clicked
-    let noClickCount = 0;
-
-    // Show the message box and hide main content
-    function showMessageBox() {
-      const messageBox = document.getElementById('messageBox');
-      const container = document.querySelector('.container');
-
-      container.style.display = 'none';
-      messageBox.style.display = 'block';
-
-      // After 4 seconds, reset the page
-      setTimeout(() => {
-        resetPage();
-      }, 4000);
-    }
-
-    // Move the "No" button to a random position and trigger effects
-    function moveNoButton() {
-      noClickCount++;
-
-      const noButton = document.querySelector('.no-button');
-      const container = document.querySelector('.container');
-      const blackScreen = document.getElementById('blackScreen');
-      const blackScreenText = blackScreen.querySelector('div');
-
-      // Calculate random position within the viewport
-      const pageWidth = window.innerWidth - noButton.offsetWidth;
-      const pageHeight = window.innerHeight - noButton.offsetHeight;
-      const randomX = Math.max(0, Math.floor(Math.random() * pageWidth));
-      const randomY = Math.max(0, Math.floor(Math.random() * pageHeight));
-      noButton.style.position = 'absolute';
-      noButton.style.left = `${randomX}px`;
-      noButton.style.top = `${randomY}px`;
-
-      // Play audio after first click, up to 3 times
-      if (noClickCount > 1 && noClickCount < 4) {
-        const audio = document.getElementById('myAudio');
-        audio.currentTime = 0;
-        audio.play().catch(e => {
-          console.log('Audio play error:', e);
+        loginBtn.addEventListener('click', () => {
+            const username = usernameInput.value.trim();
+            const password = passwordInput.value;
+            if (username === "dodo" && password === "iloveyou") {
+                customBox.textContent = "Welcome back, dodo!";
+                customBox.style.display = "block";
+                usernameInput.style.display = "none";
+                passwordInput.style.display = "none";
+                loginBtn.style.display = "none";
+                resetRow.style.display = "none";
+                displayText.textContent = "";
+                pressMeBtn.style.display = "inline-block";
+                msgIndex = 0;
+                dodoAudio.play();
+            } else {
+                customBox.textContent = "Try Again please";
+                customBox.style.display = "block";
+                pressMeBtn.style.display = "none";
+            }
         });
-      }
 
-      // Show black screen overlay after first click
-      if (noClickCount > 1) {
-        blackScreenText.textContent += "؟";
-        container.style.display = 'none';
-        blackScreen.style.display = 'flex';
+        pressMeBtn.addEventListener('click', () => {
+            if (msgIndex < messages.length) {
+                customBox.textContent = messages[msgIndex];
+                msgIndex++;
+                if (msgIndex === messages.length) {
+                    setTimeout(() => {
+                        customBox.style.display = "none";
+                        pressMeBtn.style.display = "none";
+                    }, 1200);
+                }
+            }
+        });
 
-        setTimeout(() => {
-          blackScreen.style.display = 'none';
-          container.style.display = 'block';
-        }, 1500);
-      }
-
-      // After 4 clicks, show final message and reload
-      if (noClickCount === 4) {
-        document.body.innerHTML += `
-          <div id="finalMsg" style="
-            position:fixed;
-            top:0;left:0;width:100vw;height:100vh;
-            background:black;
-            color:white;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            font-size:40px;
-            z-index:99999;
-            font-family:'Cairo',sans-serif;
-          ">اوكي خلاص معد ابي</div>
-        `;
-        setTimeout(() => {
-          document.getElementById('finalMsg').textContent = "باقي تنتظرين؟ قلت خلاص";
-          setTimeout(() => {
-            document.getElementById('finalMsg').textContent = "😒 سامحتك";
+        changePwd.addEventListener('click', () => {
+            blackOverlay.style.display = "flex";
             setTimeout(() => {
-              location.reload();
-            }, 2000);
-          }, 2000);
-        }, 3000);
-        return;
-      }
-    }
+                blackOverlay.style.display = "none";
+            }, 1000);
+        });
 
-    // Reset the page and button positions
-    function resetPage() {
-      const noButton = document.querySelector('.no-button');
-      noButton.style.position = 'relative';
-      noButton.style.left = '0';
-      noButton.style.top = '0';
-
-      const blackScreenText = document.getElementById('blackScreen').querySelector('div');
-      blackScreenText.textContent = "اها؟";
-
-      location.reload();
-    }
-
-    // Max number of hearts to show (not strictly enforced)
-    const maxHearts = 123;
-
-    // Create animated hearts at random positions
-    function createHearts() {
-      const body = document.body;
-
-      setInterval(() => {
-        const heart = document.createElement('div');
-        heart.classList.add('heart');
-
-        // Random position within 90% of the viewport
-        const minOffset = 10;
-        const maxWidth = window.innerWidth * 0.9 - 20;
-        const maxHeight = window.innerHeight * 0.9 - 20;
-
-        const randomX = minOffset + Math.random() * (maxWidth - minOffset);
-        const randomY = minOffset + Math.random() * (maxHeight - minOffset);
-
-        heart.style.left = `${randomX}px`;
-        heart.style.top = `${randomY}px`;
-        heart.style.animationDelay = `${Math.random() * 3}s`;
-
-        body.appendChild(heart);
-
-        // Remove heart after animation
-        setTimeout(() => {
-          heart.remove();
-        }, 3000);
-      }, 100);
-    }
-
-    // Start the heart animation
-    createHearts();
-  </script>
+        function createHeart() {
+            const heart = document.createElement('span');
+            heart.className = 'heart';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.fontSize = (18 + Math.random() * 28) + 'px';
+            heart.style.animationDuration = (1.2 + Math.random() * 2) + 's';
+            heart.innerHTML = `
+                <svg width="1em" height="1em" viewBox="0 0 32 29" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <radialGradient id="goldGradient" cx="50%" cy="50%" r="70%">
+                      <stop offset="0%" stop-color="#fffbe7"/>
+                      <stop offset="60%" stop-color="#ffd700"/>
+                      <stop offset="100%" stop-color="#bfa700"/>
+                    </radialGradient>
+                  </defs>
+                  <path d="M16 27S2 17 2 9.5C2 5.36 5.36 2 9.5 2c2.54 0 4.93 1.46 6.5 3.72C17.57 3.46 19.96 2 22.5 2 26.64 2 30 5.36 30 9.5 30 17 16 27 16 27z"
+                        fill="url(#goldGradient)" stroke="#bfa700" stroke-width="1.5"/>
+                </svg>
+            `;
+            document.body.appendChild(heart);
+            heart.addEventListener('animationend', () => {
+                heart.remove();
+            });
+        }
+        setInterval(() => {
+            for (let i = 0; i < 7; i++) createHeart();
+        }, 300);
+    </script>
 </body>
 </html>
